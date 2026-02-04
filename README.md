@@ -76,20 +76,6 @@ python -m app.main
 
 ```
 
-## 🚀 API Flask
-
-A API permite realizar previsões utilizando o modelo treinado.
-
-- O endpoint recebe um CSV com as features já processadas
-- Retorna o Volume previsto em escala real
-- A API é apenas para fins educacionais
-
-**Para iniciar a aplicação:**
-```bash
-python -m app.main
-
-```
-
 **Acesse no navegador:**
 ```bash
 http://localhost:5001
