@@ -1,0 +1,19 @@
+# models
+models/*.keras
+models/*.pkl
+
+# Metrics
+metrics/*./json
+
+# Artifacts
+artifacts/*.joblib
+artifacts/*.pkl
+
+ml_classifier.egg-info
+__pycache__
+
+#DATA
+data/*.csv
+data/preprocessed/*.csv
+data/processed/*.csv
+data/raw/*.csv
