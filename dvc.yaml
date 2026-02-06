@@ -4,6 +4,7 @@ stages:
     cmd: python -m src.data_loading.load_data
     deps:
       - src/data_loading/load_data.py
+      - data/raw/petr4_treinamento.csv
     outs:
       - data/raw/raw.csv
 

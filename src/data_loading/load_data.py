@@ -9,9 +9,8 @@ logger = logging.getLogger("src.data_loading.load_data")
 
 def fetch_data() -> pd.DataFrame:
     logger.info("Fetching data...")
-    dataset = pd.read_csv("data/petr4_treinamento.csv")
+    dataset = pd.read_csv("data/raw/petr4_treinamento.csv")
     dataset = dataset.dropna()
-
     data = dataset.sample(frac=1, random_state=int(time.time())).reset_index(drop=True)
     
     return data
