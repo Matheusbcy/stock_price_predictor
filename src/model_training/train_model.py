@@ -33,36 +33,17 @@ def load_params() -> dict[str, float | int]:
 def prepare_data(
     train_data: pd.DataFrame,
 ) -> tuple[np.ndarray, np.ndarray, MinMaxScaler]:
-    """
-    Espera um CSV com várias colunas de features (janela de tempo)
-    e uma coluna 'target' com o Volume.
-
-    Retorna:
-    - X_train: (amostras, timesteps, 1)
-    - y_train_scaled: (amostras, 1), Volume escalado
-    - y_scaler: MinMaxScaler usado no target
-    """
-
-    # X = todas as colunas menos 'target'
     X_train = train_data.drop("target", axis=1).values.astype("float32")
     y_train = train_data["target"].values.reshape(-1, 1).astype("float32")
 
-    # Escala o target (Volume) — ESSA É A PARTE CRÍTICA
     y_scaler = MinMaxScaler()
     y_train_scaled = y_scaler.fit_transform(y_train)
 
-    # LSTM espera (amostras, timesteps, features)
-    # timesteps = número de colunas (tamanho da janela)
-    # features = 1 (apenas 1 série: Open ao longo do tempo)
     X_train = X_train.reshape((X_train.shape[0], X_train.shape[1], 1))
 
     return X_train, y_train_scaled, y_scaler
 
-
 def create_model(input_shape, params):
-    """
-    input_shape: (timesteps, n_features)
-    """
     model = Sequential(
         [
             LSTM(
@@ -90,7 +71,7 @@ def create_model(input_shape, params):
             ),
             Dropout(params["dropout_rate"]),
 
-            Dense(1, activation="linear"),  # regressão
+            Dense(1, activation="linear"),
         ]
     )
 
@@ -123,7 +104,6 @@ def save_training_artifacts(
 
 
 def train_model(train_data: pd.DataFrame, params: dict[str, int | float]) -> None:
-    # não precisa usar pop, só ler
     tf.keras.utils.set_random_seed(params["random_seed"])
 
     X_train, y_train, y_scaler = prepare_data(train_data)
