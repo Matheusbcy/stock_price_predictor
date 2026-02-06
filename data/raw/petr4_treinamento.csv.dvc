@@ -1,0 +1,5 @@
+outs:
+- md5: e7155073bd938ac501022611e1c4aeba
+  size: 85635
+  hash: md5
+  path: petr4_treinamento.csv
