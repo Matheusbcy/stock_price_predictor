@@ -3,7 +3,7 @@ models/*.keras
 models/*.pkl
 
 # Metrics
-metrics/*./json
+metrics/*.json
 
 # Artifacts
 artifacts/*.joblib
