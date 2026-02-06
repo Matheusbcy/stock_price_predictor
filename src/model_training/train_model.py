@@ -17,7 +17,6 @@ logger = logging.getLogger("src.model_training.train_model")
 
 
 def load_data() -> pd.DataFrame:
-    # Usa as janelas criadas em feature_engineering
     train_path = "data/processed/train_processed.csv"
     logger.info(f"Loading feature data from {train_path}")
     train_data = pd.read_csv(train_path)
